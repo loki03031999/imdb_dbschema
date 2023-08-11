@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="lokeshgulhane">
+        <comment>
+            create application table
+        </comment>
+        <sql>
+            CREATE TABLE `application` (
+                `application_id` bigint(20) unsigned NOT NULL,
+                `secure_application_id` varchar(255) NOT NULL,
+                `name` varchar(255) NOT NULL,
+                `secret` tinyblob
+            )
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="lokeshgulhane">
+        <comment>
+            create user table
+        </comment>
+        <sql>
+            CREATE TABLE `user` (
+            `user_id` bigint(20) unsigned NOT NULL,
+            `secure_user_id` varchar(255) NOT NULL,
+            `name` varchar(255) NOT NULL,
+            `password` varchar(255)
+            )
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
