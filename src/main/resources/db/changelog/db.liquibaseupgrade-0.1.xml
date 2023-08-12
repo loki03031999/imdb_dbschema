@@ -7,6 +7,19 @@
 
     <changeSet id="1" author="lokeshgulhane">
         <comment>
+            create id_generator table
+        </comment>
+        <sql>
+            CREATE TABLE `id_generator` (
+            `object_name` varchar(255) NOT NULL,
+            `last_id` bigint(20),
+            PRIMARY KEY (`object_name`)
+            )
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="lokeshgulhane">
+        <comment>
             create application table
         </comment>
         <sql>
@@ -14,21 +27,23 @@
                 `application_id` bigint(20) unsigned NOT NULL,
                 `secure_application_id` varchar(255) NOT NULL,
                 `name` varchar(255) NOT NULL,
-                `secret` tinyblob
+                `secret` tinyblob,
+                PRIMARY KEY (`application_id`)
             )
         </sql>
     </changeSet>
 
-    <changeSet id="2" author="lokeshgulhane">
+    <changeSet id="3" author="lokeshgulhane">
         <comment>
             create user table
         </comment>
         <sql>
             CREATE TABLE `user` (
             `user_id` bigint(20) unsigned NOT NULL,
-            `secure_user_id` varchar(255) NOT NULL,
+            `secure_user_id` varchar(255) unique NOT NULL,
             `name` varchar(255) NOT NULL,
-            `password` varchar(255)
+            `password` varchar(255),
+            PRIMARY KEY (`user_id`)
             )
         </sql>
     </changeSet>
